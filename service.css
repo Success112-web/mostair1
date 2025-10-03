@@ -1,0 +1,180 @@
+/* --- Global Styles --- */
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #f8f9fa; /* Light Gray */
+    --dark-color: #343a40; /* Dark Gray */
+    --font-stack: 'Roboto', sans-serif;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-stack);
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* --- Services Layout --- */
+.services-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.services-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    /* Animation: Fade in title */
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Grid for Service Cards */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+/* --- Service Card Styles --- */
+.service-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Important for animation containment */
+    /* Initial animation state: Invisible and slightly moved up */
+    opacity: 0;
+    transform: translateY(20px);
+    /* Animation: Card fade and lift on load */
+    animation: fadeInLift 0.6s ease-out forwards;
+}
+
+/* Delay for stagger effect */
+.service-card:nth-child(3) { animation-delay: 0.1s; }
+.service-card:nth-child(4) { animation-delay: 0.2s; }
+.service-card:nth-child(5) { animation-delay: 0.3s; }
+.service-card:nth-child(6) { animation-delay: 0.4s; }
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.service-card h3 {
+    color: var(--primary-color);
+    margin: 15px 0 10px;
+}
+
+.summary {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+/* Image Placeholder Styling */
+/* New Image Styling */
+
+.service-image-wrapper {
+    /* Ensures a fixed area for the image */
+    width: 100%; 
+    height: 180px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.service-img {
+    /* Makes the image responsive within the wrapper */
+    width: 100%;
+    height: 100%;
+    /* Ensures the image covers the area without distortion */
+    object-fit: cover; 
+    /* Smooth transition for a hover effect */
+    transition: transform 0.5s ease;
+}
+
+/* Add a zoom effect animation on hover */
+.service-card:hover .service-img {
+    transform: scale(1.05); /* Image slightly zooms in */
+}
+
+/* Service Details (JS controlled) */
+.details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding: 0 0px; /* Reset padding */
+    margin-top: 5px;
+    color: var(--dark-color);
+}
+
+.details.visible {
+    max-height: 200px; /* Sufficient height to show content smoothly */
+    padding: 10px 0;
+}
+
+/* Button Styles */
+.btn {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .content {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #f4f4f4;
+      border-left: 4px solid #007BFF;
+    }
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLift {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
